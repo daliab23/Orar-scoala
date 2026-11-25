@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/course"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/light_pink">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Orar"
+        android:textColor="@color/orange"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/textView"
+        app:layout_constraintBottom_toTopOf="@id/tvOrar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="5dp">
+
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nume disciplina"
+                android:textSize="20dp"
+                android:textColor="@color/black"/>
+
+            <EditText android:id="@+id/et_nume_disciplina"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Introduceti numele disciplinei"
+                android:inputType="text"
+                android:textSize="20dp"/>
+
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nume profesor"
+                android:textSize="20dp"
+                android:textColor="@color/black"/>
+
+            <EditText android:id="@+id/et_nume_prof"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Introduceti numele profesorului"
+                android:inputType="text"
+                android:textSize="20dp"/>
+
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ora la care începe"
+                android:textSize="20dp"
+                android:textColor="@color/black"/>
+
+            <TextView android:id="@+id/tv_start_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ex. 08:00"
+                android:textSize="20dp"/>
+
+
+            <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ora la care se termină"
+                android:textSize="20dp"
+                android:textColor="@color/black"/>
+
+            <TextView android:id="@+id/tv_end_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ex. 10:00"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ziua din săptămână"
+                android:textSize="20dp"
+                android:textColor="@color/black"/>
+
+            <Spinner android:id="@+id/spinner_select_day"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/zilele_saptamanii" />
+
+            <Button
+                android:id="@+id/saveBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Adaugă curs"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/custom_button"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:layout_marginBottom="5dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/tvOrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Orar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/custom_button"
+        android:textColor="@color/orange"
+        android:textSize="20dp"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

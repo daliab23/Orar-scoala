@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Orarul Meu</string>
+
+    <string-array name="zilele_saptamanii">
+        <item>Luni</item>
+        <item>Marți</item>
+        <item>Miercuri</item>
+        <item>Joi</item>
+        <item>Vineri</item>
+    </string-array>
+</resources>
