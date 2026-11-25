@@ -152,6 +152,7 @@ public class EditCourseActivity extends AppCompatActivity {
                 boolean notifPermise = sp.getBoolean("notificari_activate", true);
 
                 if (updated) {
+                    CourseNotificationHelper.programeazaNotificareCurs(this, newSubject, newProfessor, newStartTime, newDay);
                     Toast.makeText(EditCourseActivity.this, "Curs actualizat!", Toast.LENGTH_SHORT).show();
                     TestActivity test = new TestActivity();
 
@@ -179,6 +180,7 @@ public class EditCourseActivity extends AppCompatActivity {
                     .setPositiveButton("Da", (dialog, which) -> {
                         boolean deleted = dbHelper.deleteCourse(courseId);
                         if (deleted) {
+                            CourseNotificationHelper.anuleazaNotificareCurs(this, etSubject.getText().toString(), tvStartTime.getText().toString(), selected_day);
                             Toast.makeText(this, "Curs șters cu succes!", Toast.LENGTH_SHORT).show();
                             Intent resultIntent = new Intent();
                             setResult(RESULT_OK, resultIntent);

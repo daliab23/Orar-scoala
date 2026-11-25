@@ -127,15 +127,26 @@ public class MainActivity extends AppCompatActivity {
 
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel(
-                    "test_channel",                // ID-ul canalului
-                    "Test Channel",                // Numele canalului
-                    NotificationManager.IMPORTANCE_HIGH // Să apară ca notificare importantă
-            );
-            channel.setDescription("Notificări pentru teste din orar 📚");
-
             NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-            manager.createNotificationChannel(channel);
+
+            NotificationChannel testChannel = new NotificationChannel(
+                    "test_channel",
+                    "Notificări Teste",
+                    NotificationManager.IMPORTANCE_HIGH
+            );
+            testChannel.setDescription("Notificări pentru teste din orar 📚");
+
+            NotificationChannel courseChannel = new NotificationChannel(
+                    "course_channel",
+                    "Notificări Cursuri",
+                    NotificationManager.IMPORTANCE_HIGH
+            );
+            courseChannel.setDescription("Notificări cu 15 minute înainte de curs ⏰");
+
+            if (manager != null) {
+                manager.createNotificationChannel(testChannel);
+                manager.createNotificationChannel(courseChannel);
+            }
         }
 
 

@@ -88,6 +88,7 @@ public class CourseActivity extends AppCompatActivity {
             boolean check = dbHelper.insert(course, profesor, startTime, endTime, ziua);
 
             if (check){
+                CourseNotificationHelper.programeazaNotificareCurs(this, course, profesor, startTime, ziua);
                 Toast.makeText(this,"Curs adaugat in orar", Toast.LENGTH_SHORT).show();
             }else{
                 Toast.makeText(this, "Eroare la adaugare in orar", Toast.LENGTH_SHORT).show();

@@ -14,28 +14,34 @@ public class NotificationReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         String subject = intent.getStringExtra("subject");
         String title = intent.getStringExtra("title");
+        String message = intent.getStringExtra("message");
+        String channelId = intent.getStringExtra("channelId");
 
+        if (channelId == null || channelId.isEmpty()) {
+            channelId = "test_channel";
+        }
 
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "test_channel")
-                .setSmallIcon(R.drawable.ic_stat_name) // pune o iconiță
-                .setContentTitle(title)     //Ai test maine | Ai test azi
-                .setContentText("Nu uita că ai test la " + subject + " 📚")
+        if (title == null || title.isEmpty()) {
+            title = "Notificare Curs";
+        }
+
+        if (message == null || message.isEmpty()) {
+            message = "Nu uita că ai test la " + (subject != null ? subject : "curs") + " 📚";
+        }
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelId)
+                .setSmallIcon(R.drawable.ic_stat_name)
+                .setContentTitle(title)
+                .setContentText(message)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(message))
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setAutoCancel(true);
 
         NotificationManagerCompat manager = NotificationManagerCompat.from(context);
-        //Verifica permisiunea pentru a trimite notificari
         if (ActivityCompat.checkSelfPermission(context, android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
             return;
         }
-        int notificationID = intent.getIntExtra("requestCode",0);
+        int notificationID = intent.getIntExtra("requestCode", 0);
         manager.notify(notificationID, builder.build());
     }
 }
